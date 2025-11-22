@@ -4,6 +4,9 @@ import { expressjwt } from "express-jwt";
 import config from "./../../config/config.js";
 const signin = async (req, res) => {
   try {
+    if (!req.body || !req.body.email || !req.body.password) {
+      return res.status(400).json({ error: "Email and password are required" });
+    }
     let user = await User.findOne({ email: req.body.email });
     if (!user) return res.status(401).json({ error: "User not found" });
     if (!user.authenticate(req.body.password)) {
@@ -15,12 +18,13 @@ const signin = async (req, res) => {
       token,
       user: {
         _id: user._id,
-        name: user.name,
+        name: user.name || "Unknown",
         email: user.email,
       },
     });
   } catch (err) {
-    return res.status(401).json({ error: "Could not sign in" });
+    console.error("Signin error:", err);
+    return res.status(401).json({ error: "Could not sign in", details: err.message });
   }
 };
 const signout = (req, res) => {

@@ -1,4 +1,4 @@
-import Education from "../models/Education.js";
+import Education from "../models/education.model.js";
 
 export const getAll = async (_req, res) => {
   try { res.json(await Education.find()); }

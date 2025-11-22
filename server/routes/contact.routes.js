@@ -1,14 +1,17 @@
 import express from "express";
-import { getAll, getById, create, update, remove, removeAll }
-  from "../controllers/Contact.controller.js";
+import ContactCtrl from "../controllers/Contact.controller.js";
+import authCtrl from "../controllers/auth.controller.js";
 
 const router = express.Router();
 
-router.get("/", getAll);
-router.get("/:id", getById);
-router.post("/", create);
-router.put("/:id", update);
-router.delete("/:id", remove);
-router.delete("/", removeAll);
+// Public routes
+router.get("/", ContactCtrl.getAll);
+router.get("/:id", ContactCtrl.getById);
+
+// Protected routes - require authentication
+router.post("/", authCtrl.requireSignin, ContactCtrl.create);
+router.put("/:id", authCtrl.requireSignin, ContactCtrl.update);
+router.delete("/:id", authCtrl.requireSignin, ContactCtrl.remove);
+router.delete("/", authCtrl.requireSignin, ContactCtrl.removeAll);
 
 export default router;
