@@ -138,11 +138,12 @@ function Project() {
     setSuccess("");
   };
 
-  return (
-    <div className="page">
-      <h1>Project Management</h1>
+ return (
+  <div className="page">
+    <h1>Project Submission Form</h1>
 
-      <p>Manage your project portfolio</p>
+    <p>Use this form to add or update projects in my portfolio.</p>
+
 
       {success && (
         <div style={{ padding: 10, marginBottom: 10, backgroundColor: "#d4edda", color: "#155724", borderRadius: 4 }}>
