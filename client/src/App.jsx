@@ -6,6 +6,8 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import EducationPage from "./pages/Education";
 import ProjectPage from "./pages/Project";
+import Content from "./pages/Content";
+
 
 
 import "./App.css";
@@ -41,6 +43,10 @@ function Navbar() {
           <NavLink to="/signup" className="nav-link nav-link-pill">
             Sign Up
           </NavLink>
+          <NavLink to="/content" className="nav-link">
+            Content
+          </NavLink>
+
         </nav>
       </div>
     </header>
@@ -58,6 +64,8 @@ function Home() {
           is a full-stack MERN portfolio created for COMP229 – Web Application
           Development.
         </p>
+         {/* New CI/CD demo paragraph */}
+        <Content />
       </section>
     </main>
   );
@@ -127,7 +135,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
-        
+        <Route path="/content" element={<Content />} /> 
 
       </Routes>
       <footer className="footer">
