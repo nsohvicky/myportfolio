@@ -1,5 +1,5 @@
 import express from "express";
-import ContactCtrl from "../controllers/Contact.controller.js";
+import ContactCtrl from "../controllers/Contact.Controller.js";
 import authCtrl from "../controllers/auth.controller.js";
 
 const router = express.Router();
