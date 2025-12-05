@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "concurrently \"cd client && npm run dev\" \"nodemon server.js\"",
-    "build": "cd client && npm run build && npm run build ",
+    "build": "cd client && npm install && npm run build ",
     "start": "node server.js",
     "cypress": "cypress open",
     "test:unit": "cd client && npm test"
