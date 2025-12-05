@@ -6,6 +6,7 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import EducationPage from "./pages/Education";
 import ProjectPage from "./pages/Project";
+import Content from './Content.jsx';
 
 import "./App.css";
 
@@ -126,6 +127,8 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/content" element={<Content />} />
+
       </Routes>
       <footer className="footer">
         © {new Date().getFullYear()} Victorine Nsoh Enjowe
