@@ -1,81 +1,138 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
+
 import Contact from "./pages/Contact";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import EducationPage from "./pages/Education";
 import ProjectPage from "./pages/Project";
 
-// Navbar with links to 6 pages 
+
+import "./App.css";
+
+// Top navigation bar
 function Navbar() {
-  const linkStyle = { marginRight: 12, color: "white", textDecoration: "none", fontWeight: 600 };
   return (
-    <nav>
-      <div style={{ maxWidth: 900, margin: "0 auto" }}>
-        <strong style={{ color: "white", marginRight: 16 }}>Victorine’s Portfolio</strong>
-        <Link to="/" style={linkStyle}>Home</Link>
-        <Link to="/about" style={linkStyle}>About</Link>
-        <Link to="/projects" style={linkStyle}>Projects</Link>
-        <Link to="/education" style={linkStyle}>Education</Link>
-        <Link to="/contact" style={linkStyle}>Contact</Link>
-        <Link to="/signin" style={linkStyle}>Sign In</Link>
-        <Link to="/signup" style={linkStyle}>Sign Up</Link>
+    <header className="nav-wrapper">
+      <div className="nav-bar">
+        <div className="nav-brand">Victorine’s Portfolio</div>
+        <nav className="nav-links">
+          <NavLink to="/" className="nav-link">
+            Home
+          </NavLink>
+          <NavLink to="/mission" className="nav-link">
+            Mission
+          </NavLink>
+          <NavLink to="/about" className="nav-link">
+            About
+          </NavLink>
+          <NavLink to="/projects" className="nav-link">
+            Projects
+          </NavLink>
+          <NavLink to="/education" className="nav-link">
+            Education
+          </NavLink>
+          <NavLink to="/contact" className="nav-link">
+            Contact
+          </NavLink>
+          <NavLink to="/signin" className="nav-link">
+            Sign In
+          </NavLink>
+          <NavLink to="/signup" className="nav-link nav-link-pill">
+            Sign Up
+          </NavLink>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 }
 
-// Home
+// Home – only welcome message
 function Home() {
   return (
-    <div className="page">
-      <h1>Welcome to Victorine's Portfolio</h1>
-      <p>This site shows my work, education, and how to contact me.</p>
-      <p>
-        <Link to="/about">About Me</Link> | <Link to="/projects">Projects</Link>
-      </p>
-      <h3>Mission</h3>
-      <p>Build useful, simple software and keep learning every day.</p>
-    </div>
+    <main className="page">
+      <section className="card">
+        <h1 className="page-title">Welcome to Victorine&apos;s Portfolio</h1>
+        <p className="page-text">
+          This site showcases my projects, education, and how to contact me. It
+          is a full-stack MERN portfolio created for COMP229 – Web Application
+          Development.
+        </p>
+      </section>
+    </main>
   );
 }
 
-//About page shows headshot + resume link
+// Mission – separate page
+function Mission() {
+  return (
+    <main className="page">
+      <section className="card">
+        <h1 className="page-title">Mission</h1>
+        <p className="page-text">
+          To build useful, simple software that makes people’s lives easier,
+          while growing every day as a software engineer and problem solver.
+        </p>
+        <p className="page-text">
+          I love clean design, clear code, and learning new tools that help me
+          move from “idea” to “working prototype” quickly.
+        </p>
+      </section>
+    </main>
+  );
+}
+
+// About – description + resume
 function About() {
   return (
-    <div className="page">
-      <h1>About Me</h1>
-      <p>
-        My name is <strong>Victorine Nsoh Enjowe</strong>. I am a student at Centennial College.
-        I enjoy building clean, simple web apps and learning new tools.
-      </p>
-
-      
-      <img src="/headshot.jpg" alt="My headshot" width="180" style={{ marginTop: 12 }} />
-
-      
-        <a href="/Resume.pdf" target="_blank" rel="noreferrer">Download My Resume (PDF)</a>
-      
-    </div>
+    <main className="page">
+      <section className="card card-flex">
+        <div className="card-column">
+          <h1 className="page-title">About Me</h1>
+          <p className="page-text">
+            My name is <strong>Victorine Nsoh Enjowe</strong>. I am a student at
+            Centennial College, studying Software Engineering Technology – AI.
+            I enjoy building clean, simple web applications and trying out new
+            technologies.
+          </p>
+          <p className="page-text">
+            This portfolio is part of my journey into full-stack development,
+            using MongoDB, Express, React, and Node.js.
+          </p>
+          <a href="/Resume.pdf" target="_blank" rel="noreferrer" className="btn">
+            Download My Resume (PDF)
+          </a>
+        </div>
+        <div className="card-column card-photo-column">
+          {/* If the image is not set up yet, this still looks nice */}
+          <div className="photo-placeholder">Photo</div>
+          <p className="photo-caption">Future Software Engineer ✨</p>
+        </div>
+      </section>
+    </main>
   );
 }
 
-
-// App with Routes + footer
+// Main App
 export default function App() {
   return (
-    <div>
+    <div className="app-root">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/mission" element={<Mission />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<ProjectPage />} />
         <Route path="/education" element={<EducationPage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        
+
       </Routes>
-      <footer>© {new Date().getFullYear()} Victorine Nsoh Enjowe</footer>
+      <footer className="footer">
+        © {new Date().getFullYear()} Victorine Nsoh Enjowe
+      </footer>
     </div>
   );
 }
